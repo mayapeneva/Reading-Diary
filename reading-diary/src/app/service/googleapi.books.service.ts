@@ -10,7 +10,7 @@ const authentication = 'key';
 @Injectable({
   providedIn: 'root'
 })
- 
+
 export class GoogleApiBooksService {
 
   constructor(private httpClient: HttpClient) { }
@@ -38,5 +38,5 @@ export class GoogleApiBooksService {
   findBookBySubject(subject: string): Observable<GoogleApiBooks> {
     const queryString = `${path}?q=subject:${subject.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
     return this.httpClient.get<GoogleApiBooks>(queryString);
-  } 
+  }
 }
