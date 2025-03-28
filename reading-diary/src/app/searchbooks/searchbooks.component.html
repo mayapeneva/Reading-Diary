@@ -1,0 +1,74 @@
+<ng-container>
+    <div class="accordion accordion-flush" id="accordionFlush">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Search for books by Title
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <form class="d-flex" role="search" [formGroup]="titleForm" (ngSubmit)="searchByTitle()">
+                        <input class="form-control me-2" type="text" placeholder="Book title" aria-label="Book title"
+                            formControlName="input">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Search for books by Author
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <form class="d-flex" role="search" [formGroup]="authorForm" (ngSubmit)="searchByAuthor()">
+                        <input class="form-control me-2" type="text" placeholder="Book author" aria-label="Book author"
+                            formControlName="input">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Search for books by ISBN
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <form class="d-flex" role="search" [formGroup]="isbnForm" (ngSubmit)="searchByISBN()">
+                        <input class="form-control me-2" type="text" placeholder="Book ISBN" aria-label="Book ISBN"
+                            formControlName="input">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Search for books by Keyword
+                </button>
+            </h2>
+            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+                    <form class="d-flex" role="search" [formGroup]="keywordsForm" (ngSubmit)="searchByKeywords()">
+                        <input class="form-control me-2" type="text" placeholder="Keywords" aria-label="Keywords"
+                            formControlName="input">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-books [books]="searchedBooks "></app-books>
+</ng-container>

@@ -1,10 +1,11 @@
+import { SaleInfo } from "./saleInfo.model";
 import { VolumeInfo } from "./volumeInfo.model";
 
-export interface GoogeApiBook {
+export interface GoogleApiBook {
   kind: string;
   id: number;
   etag: string;
   selfLink: string;
   volumeInfo: VolumeInfo;
-  isbn: string;
+  saleInfo: SaleInfo;
 }

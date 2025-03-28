@@ -1,3 +1,4 @@
+import { ImageLinks } from "./imageLinks.model";
 import { IndustryIdentifiers } from "./industryIdentifier.model";
 
 export interface VolumeInfo {
@@ -12,5 +13,9 @@ export interface VolumeInfo {
         height: string,
         width: string,
         thickness: string
-    }
+    };
+    mainCategory: string;
+    categories: string[];
+    imageLinks: ImageLinks;
+    language: string;
 }

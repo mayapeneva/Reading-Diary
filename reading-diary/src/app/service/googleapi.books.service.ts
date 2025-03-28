@@ -21,22 +21,27 @@ export class GoogleApiBooksService {
   }
 
   findBookByTitle(title: string): Observable<GoogleApiBooks> {
-    const queryString = `${path}?q=intitle:${title.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
+    const queryString = `${path}?q=intitle:${title.replaceAll(' ', '+')}&orderBy=newest&${authentication}=${environment.googleApi_ApiKey}`;
     return this.httpClient.get<GoogleApiBooks>(queryString);
   }
 
   findBookByAuthor(author: string): Observable<GoogleApiBooks> {
-    const queryString = `${path}?q=inauthor:${author.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
+    const queryString = `${path}?q=inauthor:${author.replaceAll(' ', '+')}&orderBy=newest&${authentication}=${environment.googleApi_ApiKey}`;
     return this.httpClient.get<GoogleApiBooks>(queryString);
   }
 
   findBookByPublisher(publisher: string): Observable<GoogleApiBooks> {
-    const queryString = `${path}?q=inpublisher:${publisher.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
+    const queryString = `${path}?q=inpublisher:${publisher.replaceAll(' ', '+')}&orderBy=newest&${authentication}=${environment.googleApi_ApiKey}`;
+    return this.httpClient.get<GoogleApiBooks>(queryString);
+  }
+
+  findBookByKeywords(keywords: string): Observable<GoogleApiBooks> {
+    const queryString = `${path}?q=${keywords.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
     return this.httpClient.get<GoogleApiBooks>(queryString);
   }
 
   findBookBySubject(subject: string): Observable<GoogleApiBooks> {
-    const queryString = `${path}?q=subject:${subject.replaceAll(' ', '+')}&${authentication}=${environment.googleApi_ApiKey}`;
+    const queryString = `${path}?q=subject:${subject.replaceAll(' ', '+')}&orderBy=newest&${authentication}=${environment.googleApi_ApiKey}`;
     return this.httpClient.get<GoogleApiBooks>(queryString);
   }
 }

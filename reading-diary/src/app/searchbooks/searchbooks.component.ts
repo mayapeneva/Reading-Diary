@@ -1,14 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { OpenLibraryBooksService } from '../../service/openlibrary.books.service';
-import { GoogleApiBooksService } from '../../service/googleapi.books.service';
 import { catchError } from 'rxjs';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { OpenLibraryBooks } from '../../models/openlibrary.books.model';
+import { GoogleApiBooksService } from '../service/googleapi.books.service';
+import { OpenLibraryBooksService } from '../service/openlibrary.books.service';
+import { GoogleApiBooks } from '../models/googleapi.books.model';
+import { BooksComponent } from '../components/books/books.component';
 
 @Component({
   selector: 'app-searchbooks',
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, BooksComponent],
   templateUrl: './searchbooks.component.html',
   styleUrl: './searchbooks.component.css'
 })
@@ -19,19 +20,19 @@ export class SearchbooksComponent {
   isbnForm = new FormGroup({ "input": new FormControl('') });
   keywordsForm = new FormGroup({ "input": new FormControl('') });
 
-  searchedBooks?: OpenLibraryBooks;
+  searchedBooks?: GoogleApiBooks;
 
   constructor(private openlibraryBooksService: OpenLibraryBooksService, private googleApiBooksService: GoogleApiBooksService) { }
 
   searchByTitle() {
     let title = this.titleForm.get("input")?.value;
     if (title && this.titleForm.get("input")?.valid)
-      this.openlibraryBooksService.findBookByTitle(title)
+      this.googleApiBooksService.findBookByTitle(title)
         .pipe(catchError(error => {
           console.log(error);
           throw error;
         }))
-        .subscribe(data => {
+        .subscribe(async data => {
           this.searchedBooks = data;
         });
   }
@@ -39,7 +40,7 @@ export class SearchbooksComponent {
   searchByAuthor() {
     let author = this.authorForm.get("input")?.value;
     if (author && this.authorForm.get("input")?.valid)
-      this.openlibraryBooksService.findBookByAuthor(author)
+      this.googleApiBooksService.findBookByAuthor(author)
         .pipe(catchError(error => {
           console.log(error);
           throw error;
@@ -52,7 +53,7 @@ export class SearchbooksComponent {
   searchByISBN() {
     let isbn = this.isbnForm.get("input")?.value;
     if (isbn && this.isbnForm.get("input")?.valid)
-      this.openlibraryBooksService.findBookByIsbn(isbn)
+      this.googleApiBooksService.findBookByIsbn(isbn)
         .pipe(catchError(error => {
           console.log(error);
           throw error;
@@ -65,7 +66,7 @@ export class SearchbooksComponent {
   searchByKeywords() {
     let keywords = this.keywordsForm.get("input")?.value;
     if (keywords && this.keywordsForm.get("input")?.valid)
-      this.openlibraryBooksService.findBookByQuery(keywords)
+      this.googleApiBooksService.findBookByKeywords(keywords)
         .pipe(catchError(error => {
           console.log(error);
           throw error;
