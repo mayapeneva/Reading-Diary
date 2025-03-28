@@ -8,8 +8,8 @@
         </h2>
         <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
             <div class="accordion-body">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Book title" aria-label="Book title">
+                <form class="d-flex" role="search" [formGroup]="titleForm" (ngSubmit)="searchByTitle()">
+                    <input class="form-control me-2" type="text" placeholder="Book title" aria-label="Book title" formControlName="input">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -24,8 +24,8 @@
         </h2>
         <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
             <div class="accordion-body">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Book author" aria-label="Book author">
+                <form class="d-flex" role="search" [formGroup]="authorForm" (ngSubmit)="searchByAuthor()">
+                    <input class="form-control me-2" type="text" placeholder="Book author" aria-label="Book author" formControlName="input">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -40,8 +40,8 @@
         </h2>
         <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
             <div class="accordion-body">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Book ISBN" aria-label="Book ISBN">
+                <form class="d-flex" role="search" [formGroup]="isbnForm" (ngSubmit)="searchByISBN()">
+                    <input class="form-control me-2" type="text" placeholder="Book ISBN" aria-label="Book ISBN" formControlName="input">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -56,8 +56,8 @@
         </h2>
         <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
             <div class="accordion-body">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Keywords" aria-label="Keywords">
+                <form class="d-flex" role="search" [formGroup]="keywordsForm" (ngSubmit)="searchByKeywords()">
+                    <input class="form-control me-2" type="text" placeholder="Keywords" aria-label="Keywords" formControlName="input">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
