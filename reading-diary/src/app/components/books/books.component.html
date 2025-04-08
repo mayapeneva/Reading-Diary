@@ -1,5 +1,7 @@
-<ul *ngIf="books && books.items && books.items.length != 0">
-    <li *ngFor="let book of books?.items; index as i">
-        <app-book [book]="book"></app-book>
-    </li>
-</ul>
+<div class="books-container">
+    <div class="row row-cols-auto" *ngIf="books && books.items && books.items.length != 0">
+        <div class="col" *ngFor="let book of books?.items; index as i">
+            <app-book [book]="book"></app-book>
+        </div>
+    </div>
+</div>

@@ -11,4 +11,10 @@ import { NgIf } from '@angular/common';
 
 export class BookComponent {
   @Input() book?: GoogleApiBook;
+
+  getBookImage(): string {
+    return this.book && this.book.volumeInfo && this.book.volumeInfo.imageLinks && this.book.volumeInfo.imageLinks.thumbnail
+      ? this.book.volumeInfo.imageLinks.thumbnail
+      : "./assets/images/noImage.jpg";
+  }
 }

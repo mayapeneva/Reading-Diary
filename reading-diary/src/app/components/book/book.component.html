@@ -1,10 +1,10 @@
 <div *ngIf="book" class="card" style="width: 18rem;">
-    <img src={{book.volumeInfo.imageLinks.smallThumbnail}} class="card-img-top" alt="...">
+    <img src={{getBookImage()}} class="card-img-top" alt="...">
     <div *ngIf="book.volumeInfo" class="card-body">
         <h5 class="card-title">{{book.volumeInfo.title}}</h5>
-        <h6 *ngIf="book.volumeInfo.authors">{{book.volumeInfo.authors.join(", ")}},
-            {{book.volumeInfo.publishedDate.substring(0, 4)}}</h6>
-        <p class="card-text">{{book.volumeInfo.description.substring(0, 200)}}.....</p>
-        <a href={{book.saleInfo.buyLink}} class="btn btn-primary">Go somewhere</a>
+        <h6 *ngIf="book.volumeInfo.authors && book.volumeInfo.authors.length > 0">{{book.volumeInfo.authors.join(", ")}},
+            {{book.volumeInfo.publishedDate?.substring(0, 4)}}</h6>
+        <p class="card-text">{{book.volumeInfo.description?.substring(0, 200)}}.....</p>
+        <a href={{this.book.volumeInfo.previewLink}} class="btn btn-primary" target="_blank">Go somewhere</a>
     </div>
 </div>
