@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { catchError } from 'rxjs';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { GoogleApiBooksService } from '../service/googleapi.books.service';
-import { OpenLibraryBooksService } from '../service/openlibrary.books.service';
-import { GoogleApiBooks } from '../models/googleapi.books.model';
-import { BooksComponent } from '../components/books/books.component';
+import { GoogleApiBooksService } from '../../service/googleapi.books.service';
+import { OpenLibraryBooksService } from '../../service/openlibrary.books.service';
+import { GoogleApiBooks } from '../../models/googleapi.books.model';
+import { BooksComponent } from '../books/books.component';
 
 @Component({
   selector: 'app-searchbooks',
