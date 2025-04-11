@@ -15,6 +15,12 @@ export class BookComponent {
   getBookImage(): string {
     return this.book && this.book.volumeInfo && this.book.volumeInfo.imageLinks && this.book.volumeInfo.imageLinks.thumbnail
       ? this.book.volumeInfo.imageLinks.thumbnail
-      : "../../assets/images/noImage.jpg";
+      : "/noImage.jpg";
+  }
+
+  getBookDescription(): string {
+    return this.book && this.book.volumeInfo && this.book.volumeInfo.description
+    ? `${this.book.volumeInfo.description?.substring(0, 200)}.....`
+    : "No description available";
   }
 }
